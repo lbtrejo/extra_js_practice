@@ -22,8 +22,15 @@ const coinFlip = function(){
 }
 
 // 4.  Make a function called twoDice() that returns the sum of rolling two six sided dice.
-//
-//
+
+const twoDice = function(){
+    let firstDie = Math.floor(Math.random() * Math.floor(6) + 1);
+    console.log("First die roll: " + firstDie);
+    let secondDie = Math.floor(Math.random() * Math.floor(6) + 1);
+    console.log("Second die roll: " + secondDie);
+    return console.log("The sum of both rolls is: " + (firstDie + secondDie).toString() + ".")
+}
+
 // 5.  Make a function called twentySidedDie() that returns a random integer between 1 and 20.
 //
 //
