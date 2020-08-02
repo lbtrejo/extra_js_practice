@@ -55,17 +55,23 @@ const tetrahedron = function(){
 // 8.  Make a function called rollDie() that returns an integer between 1 and 6.
 
 const rollDie = function(){
-    let dieRoll = Math.floor(Math.random() * Math.floor(4) + 1);
-    console.log("Tetrahedron roll: " + dieRoll);
+    let dieRoll = Math.floor(Math.random() * Math.floor(6) + 1);
+    return dieRoll;
+    // console.log("Dice roll: " + dieRoll);
 }
 
 // 9.  Make a function called listOfRolls(num) that takes in a number containing how many 6-sided dice rolls you want to make. The listOfRolls function should return an array of that length, where each element of the array is the result of the rollDie function.
-//
-//
+
+function listOfRolls(rolls){
+    let result = [];
+    for (let i = 1; i <= rolls ; i++) {
+        result.push(rollDie());
+    }
+    return console.log(result);
+}
+
 // 10.  Make a function called listOfRollsFromDieFunc(numberOfRolls, diceFunction)
-//
-//
-// 11.  This function should take in two arguments:
+//      This function should take in two arguments:
 //
 //     The first argument is the number of rolls you want to make.
 //     The second argument is a function that contains the function definition for the type of die you want to roll.
