@@ -32,17 +32,33 @@ const twoDice = function(){
 }
 
 // 5.  Make a function called twentySidedDie() that returns a random integer between 1 and 20.
-//
-//
+
+const twentySidedDie = function(){
+    let dieRoll = Math.floor(Math.random() * Math.floor(20) + 1);
+    console.log("Twenty sided die roll: " + dieRoll);
+}
+
 // 6.  Make a function called twelveSidedDie() that returns a random integer between 1 and 12.
-//
-//
+
+const twelveSidedDie = function(){
+    let dieRoll = Math.floor(Math.random() * Math.floor(12) + 1);
+    console.log("Twelve sided die roll: " + dieRoll);
+}
+
 // 7.  Make a function called tetrahedron() that returns a random integer between 1 and 4.
-//
-//
+
+const tetrahedron = function(){
+    let dieRoll = Math.floor(Math.random() * Math.floor(4) + 1);
+    console.log("Tetrahedron roll: " + dieRoll);
+}
+
 // 8.  Make a function called rollDie() that returns an integer between 1 and 6.
-//
-//
+
+const rollDie = function(){
+    let dieRoll = Math.floor(Math.random() * Math.floor(4) + 1);
+    console.log("Tetrahedron roll: " + dieRoll);
+}
+
 // 9.  Make a function called listOfRolls(num) that takes in a number containing how many 6-sided dice rolls you want to make. The listOfRolls function should return an array of that length, where each element of the array is the result of the rollDie function.
 //
 //
