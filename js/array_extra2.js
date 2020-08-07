@@ -69,11 +69,25 @@ function getUniqueValues(arr){
 
 
 // Exercise 6. Write a function named reverseArray that takes in an array and returns it reversed, but without altering the original array.
+
+function reverseArray(arr){
+    return arr.reverse();
+}
+
+
 // Exercies 7. Write a function named getRandomQuote().
 //   Inside of the function, create an array of strings where each string is a quote or thought you find inspirational
 //   getRandomQuote should generate a random number between 0 and the array’s length minus 1
 //   use the randomly generated number as your index
 //   return a random quote.
+
+let quotes = ["America, F@#$ yeah!", "Peace sells, but who's buying?", "More cowbell!", "Be excellent to each other", "Party hard!"];
+
+function getRandomQuote(arr){
+    return (arr[Math.floor(Math.random() * (5))]);
+}
+
+
 // Exercise 8. Write a function named getIndexesOf() that takes in two arguments.
 // The first argument should be a specific numeral or character
 // The second argument should be any given string
