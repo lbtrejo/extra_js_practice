@@ -128,10 +128,32 @@ function removeAll(arr, value){
 
 // Exercise 10. Write a function named firstTenFibonacciNumbers() that returns an array of the first ten fibonacci numbers
 
+// Couldn't figure out the math logic on this one, had to look it up.
+function firstTenFibonacciNumbers(){
+    let result = [], a = 1, b = 0, temp;
+    for (let x = 1; x <= 10; x++){
+        temp = a;
+        a = a + b;
+        b = temp;
+        result.push(b);
+    }
+    return result;
+}
 
 
 // Exercise 11. Write a function named getNFibonacci(n) that returns an array containing the first n fibonacci numbers
 
+function getNFibonacci(n){
+    let result = [], a = 1, b = 0, temp;
+    while (n > 0){
+        temp = a;
+        a = a + b;
+        b = temp;
+        result.push(b);
+        n--;
+    }
+    return result;
+}
 
 
 // Exercise 12. Write a function named moveFirstToLast() that takes in an array
