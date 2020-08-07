@@ -94,6 +94,19 @@ function getRandomQuote(arr){
 // getIndexesOf() should return an array containing all of the indexes of that character in the string
 // Example: getIndexesOf(“a”, “banana”) should return the array [1, 3, 5]
 // Example: getIndexesOf(“z”, “banana”) should return an empty array [] since there are no “z” characters in “banana”
+
+function getIndexesOf(character, string){
+    let splitString = string.split("");
+    let result = [];
+        splitString.forEach(function(element, index){
+        if (character === element){
+            result.push(index);
+        }
+    })
+    return result;
+}
+
+
 // Exercise 9. Write a function named removeAll.
 // It should accept an array and a value
 // removeAll should return an array with all of the original contents EXCEPT for the provided value
@@ -101,8 +114,17 @@ function getRandomQuote(arr){
 // output array
 // Example: removeAll([1, 2, 3], 2) should return [1, 3]
 // Example 2: removeAll([2, 2, 3, 4, 5, 2, 2], 2) should return [3, 4, 5]
+
+
+
 // Exercise 10. Write a function named firstTenFibonacciNumbers() that returns an array of the first ten fibonacci numbers
+
+
+
 // Exercise 11. Write a function named getNFibonacci(n) that returns an array containing the first n fibonacci numbers
+
+
+
 // Exercise 12. Write a function named moveFirstToLast() that takes in an array
 // the function should return the array with the first element at the end
 // Example: moveFirstToLast([1, 2, 3, 4]) should return [2, 3, 4, 1]
