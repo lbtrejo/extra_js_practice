@@ -172,3 +172,15 @@ function moveFirstToLast(arr){
 // Zip returns a new array of arrays where each element is an array of the two elements at the same index
 // Example: zip([1, 2, 3], [4, 5, 6]) returns [[1, 4], [2, 5], [3, 6])
 // Example: zip([“a”, “b”, “c”], [“x”, “y”, “z”]) returns [[“a”, “x”], [“b”, “y”], [“c”, “z”]]
+
+function zip(arr1, arr2){
+    let result = [];
+    if (arr1.length !== arr2.length){
+        return "Arrays are not equal length :(";
+    }
+    for (let x = 0; x < arr1.length; x++){
+        let output = [arr1[x], arr2[x]];
+        result.push(output);
+    }
+    return result;
+}
