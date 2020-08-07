@@ -159,6 +159,15 @@ function getNFibonacci(n){
 // Exercise 12. Write a function named moveFirstToLast() that takes in an array
 // the function should return the array with the first element at the end
 // Example: moveFirstToLast([1, 2, 3, 4]) should return [2, 3, 4, 1]
+
+function moveFirstToLast(arr){
+    let moved = arr[0];
+    arr.shift();
+    arr.push(moved);
+    return arr;
+}
+
+
 // Exercise 13. Write a function named zip() that takes in two arrays with the same number of elements
 // Zip returns a new array of arrays where each element is an array of the two elements at the same index
 // Example: zip([1, 2, 3], [4, 5, 6]) returns [[1, 4], [2, 5], [3, 6])
