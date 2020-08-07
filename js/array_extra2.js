@@ -3,7 +3,9 @@
  * Intermediate Array practice: array creation, iteration, and manipulation
  */
 
-let pets = ["istanbul", "toby", "millie", "ranger", "trooper", "papa", "leo", "boris", "ranger"];
+let pets = ["istanbul", "toby", "millie", "ranger", "trooper", "papa", "leo", "boris", "ranger", "toby", "toby", "boris"];
+let evens = [2, 4, 6, 8];
+let odds = [1, 3, 5, 7, 9];
 
 // Exercise 0. Write a function named first() that returns only the first element of an array
 
@@ -54,11 +56,16 @@ function getShortestString(array){
 // Exercise 4. Write a function named addTwoArrays that takes in two, one dimensional arrays. The function should return a single array containing all of the elements of the first array along with all of the elements of the second array
 // Example: addTwoArrays([1, 2, 3], [4, 5, 6]) should return [1, 2, 3, 4, 5, 6]
 
-
+function addTwoArrays(firstArray, secondArray){
+    return firstArray.concat(secondArray);
+}
 
 // Exercise 5. Write a function named getUniqueValues that takes in an array and returns the array without any duplicates
 // Example: getUniqueValues([“a”, “b”, “a”, “b”, “c”, “c”]) should return [“a”, “b”, “c”]
 
+function getUniqueValues(arr){
+    return Array.from(new Set(arr))
+}
 
 
 // Exercise 6. Write a function named reverseArray that takes in an array and returns it reversed, but without altering the original array.
