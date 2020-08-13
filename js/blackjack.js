@@ -9,8 +9,10 @@ let cardTypes = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K
 let suits = ["spades", "clubs", "hearts", "diamonds"];
 let deck = [];
 let playerHand = [];
-let dealerHandVis = [];
-let dealerHandHid = [];
+let dealerHand = [];
+// let dealerHandHid = [];
+let playerValue = 0;
+let dealerValue = 0;
 
 function getDeck() {
     for (let i = 0 ; i < suits.length ; i++) {
@@ -29,7 +31,8 @@ function getDeck() {
 function determineValue(card) {
     let value = 0;
     if (card.type === "A") {
-        return (value = [1, 11]);
+        // Need to make this an array of [1, 11], but still working out how to handle the resulting math
+        return (value = 11);
     } else if (card.type === "K" || card.type === "Q" || card.type === "J" || card.type === "10" ) {
         return (value = 10);
     } else
@@ -56,10 +59,64 @@ function drawCard(hand) {
     return hand;
 }
 
-// TODO: Hand calculation
-// TODO: Deal function
+// Hand score calculation
+function handValue(hand){
+    let score = 0;
+    for (let i = 0 ; i < hand.length ; i++) {
+        score += hand[i].value
+        // console.log(hand[i].value);
+    }
+    return score;
+ }
+
+// Main Game function
+function playBlackjack() {
+    console.log("Good luck, player!");
+    console.log("=========================");
+    console.log("");
+    shuffleDeck(getDeck());
+    drawCard(playerHand);
+    drawCard(dealerHand);
+    drawCard(playerHand);
+    drawCard(dealerHand);
+    playerValue = handValue(playerHand);
+    dealerValue = handValue(dealerHand);
+    displayHand(playerHand, "player");
+    displayHand(dealerHand, "dealer");
+    // At this point, we need to evaluate if the dealer has a blackjack and if so end the game accordingly
+    // If not, then prompt the user for a hit
+    while (true) {
+        if (confirm("Hit?") === true) {
+            hitMe(playerHand);
+            break;
+        }
+    }
+
+}
 // TODO: Hit me function
+
+function hitMe(hand) {
+    drawCard(hand);
+    displayHand(hand);
+}
+
+function displayHand(hand, owner) {
+    let display = [];
+    if (owner === "dealer") {
+        for (let i = 1 ; i < hand.length ; i++) {
+            display.push(hand[i].type);
+        }
+        display.unshift("?");
+        return console.log("Dealer Hand: ", display);
+    } else
+    for (let i = 0 ; i < hand.length ; i++) {
+        display.push(hand[i].type);
+    }
+    return console.log("Player Hand: ", display);
+}
+
+
 // TODO: Stay function
+// TODO: Logic for win/lose conditions (player blackjack, bust, dealer blackjack)
+// TODO: Ace 1/11 array and resulting math calculations
 
-
-shuffleDeck(getDeck());
