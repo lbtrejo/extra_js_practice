@@ -84,6 +84,7 @@ function playBlackjack() {
     displayHand(playerHand, "player");
     displayHand(dealerHand, "dealer");
     // At this point, we need to evaluate if the dealer has a blackjack and if so end the game accordingly
+    evaluateScore(playerValue);
     // If not, then prompt the user for a hit
     while (true) {
         if (confirm("Hit?") === true) {
@@ -98,6 +99,7 @@ function playBlackjack() {
 function hitMe(hand) {
     drawCard(hand);
     displayHand(hand);
+    evaluateScore(handValue(hand))
 }
 
 function displayHand(hand, owner) {
@@ -118,5 +120,22 @@ function displayHand(hand, owner) {
 
 // TODO: Stay function
 // TODO: Logic for win/lose conditions (player blackjack, bust, dealer blackjack)
+
+function evaluateScore(score){
+    // Instead of using a score param, use a hand param, calc the length and conditionally set a win message for a 'blackjack'
+    if (score === 21) {
+        // Doesn't take into account the dealer score, will need more logic for that in the future.
+        return console.log("Congrats, you've won!")
+    } else if (score > 21) {
+        return console.log("Drats, you've busted!")
+    }
+    return console.log("Make your next move.");
+}
+
+function playAgain() {
+    // hard refresh browser to reload all resources and reset all values
+    location.reload(true);
+}
+
 // TODO: Ace 1/11 array and resulting math calculations
 
