@@ -10,7 +10,7 @@ let suits = ["spades", "clubs", "hearts", "diamonds"];
 let deck = [];
 let playerHand = [];
 let dealerHand = [];
-// let dealerHandHid = [];
+let dealerHandHid = [];
 let playerValue = 0;
 let dealerValue = 0;
 
@@ -81,16 +81,18 @@ function playBlackjack() {
     drawCard(dealerHand);
     playerValue = handValue(playerHand);
     dealerValue = handValue(dealerHand);
-    displayHand(playerHand, "player");
-    displayHand(dealerHand, "dealer");
+    displayHand(playerHand);
+    displayHand(dealerHand, "initial");
     // At this point, we need to evaluate if the dealer has a blackjack and if so end the game accordingly
     evaluateScore(playerValue);
     // If not, then prompt the user for a hit
     while (true) {
-        if (confirm("Hit?") === true) {
+        if (confirm("Hit 'OK' to hit, 'Cancel' to stand") === true) {
             hitMe(playerHand);
+            continue;
+        } else
+            stay();
             break;
-        }
     }
 
 }
@@ -102,14 +104,19 @@ function hitMe(hand) {
     evaluateScore(handValue(hand))
 }
 
-function displayHand(hand, owner) {
+function displayHand(hand, status) {
     let display = [];
-    if (owner === "dealer") {
+    if (status === "initial") {
         for (let i = 1 ; i < hand.length ; i++) {
             display.push(hand[i].type);
         }
         display.unshift("?");
         return console.log("Dealer Hand: ", display);
+    } else if (status === "final") {
+        for (let i = 0 ; i < hand.length ; i++) {
+            display.push(hand[i].type);
+        }
+        return console.log("Dealer Hand: ", display)
     } else
     for (let i = 0 ; i < hand.length ; i++) {
         display.push(hand[i].type);
@@ -119,6 +126,14 @@ function displayHand(hand, owner) {
 
 
 // TODO: Stay function
+
+function stay(){
+    // Show the full dealer hand
+    displayHand(dealerHand, "final")
+    // Evaluate the current scores of both hands
+    // If dealer > player and dealer < 17, dealer hits
+}
+
 // TODO: Logic for win/lose conditions (player blackjack, bust, dealer blackjack)
 
 function evaluateScore(score){
@@ -134,7 +149,7 @@ function evaluateScore(score){
 
 function playAgain() {
     // hard refresh browser to reload all resources and reset all values
-    location.reload(true);
+    location.reload();
 }
 
 // TODO: Ace 1/11 array and resulting math calculations
