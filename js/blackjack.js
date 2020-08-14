@@ -127,11 +127,27 @@ function displayHand(hand, status) {
 
 // TODO: Stay function
 
-function stay(){
+function stay() {
     // Show the full dealer hand
     displayHand(dealerHand, "final")
     // Evaluate the current scores of both hands
     // If dealer > player and dealer < 17, dealer hits
+    while (dealerValue < playerValue && dealerValue < 17) {
+        //     if (dealerValue < playerValue && dealerValue < 17) {
+        //         hitMe(dealerHand);
+        //         continue;
+        //     } else if (dealerValue > 21 && playerValue < 21) {
+        //         return console.log("Dealer busts, player wins!");
+        //     } else if (dealerValue > playerValue) {
+        //         console.log("Dealer wins!")
+        //     }
+        // }
+        hitMe(dealerHand);
+        dealerValue = handValue(dealerHand);
+    }
+    playerValue = handValue(playerHand);
+    console.log("Player Score: ", playerValue);
+    console.log("Dealer Score: ", dealerValue);
 }
 
 // TODO: Logic for win/lose conditions (player blackjack, bust, dealer blackjack)
