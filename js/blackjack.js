@@ -33,7 +33,7 @@ function determineValue(card) {
     if (card.type === "A") {
         // Need to make this an array of [1, 11], but still working out how to handle the resulting math
         return (value = 11);
-    } else if (card.type === "K" || card.type === "Q" || card.type === "J" || card.type === "10" ) {
+    } else if (card.type === "K" || card.type === "Q" || card.type === "J") {
         return (value = 10);
     } else
         return (value = parseInt(card.type));
@@ -89,6 +89,7 @@ function playBlackjack() {
     while (true) {
         if (confirm("Hit 'OK' to hit, 'Cancel' to stand") === true) {
             hitMe(playerHand);
+            console.log("=========================");
             continue;
         } else
             stay();
@@ -98,9 +99,9 @@ function playBlackjack() {
 }
 // TODO: Hit me function
 
-function hitMe(hand) {
+function hitMe(hand, owner) {
     drawCard(hand);
-    displayHand(hand);
+    displayHand(hand, owner);
     evaluateScore(handValue(hand))
 }
 
@@ -129,7 +130,13 @@ function displayHand(hand, status) {
 
 function stay() {
     // Show the full dealer hand
+    console.log("Player stays.");
+    console.log("=========================");
+    console.log("");
     displayHand(dealerHand, "final")
+    console.log("Player Score: ", playerValue);
+    console.log("Dealer Score: ", dealerValue);
+    console.log("=========================");
     // Evaluate the current scores of both hands
     // If dealer > player and dealer < 17, dealer hits
     while (dealerValue < playerValue && dealerValue < 17) {
@@ -142,7 +149,7 @@ function stay() {
         //         console.log("Dealer wins!")
         //     }
         // }
-        hitMe(dealerHand);
+        hitMe(dealerHand, "final");
         dealerValue = handValue(dealerHand);
     }
     playerValue = handValue(playerHand);
