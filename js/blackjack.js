@@ -10,10 +10,10 @@ let suits = ["spades", "clubs", "hearts", "diamonds"];
 let deck = [];
 let playerHand = [];
 let dealerHand = [];
-let dealerHandHid = [];
 let playerValue = 0;
 let dealerValue = 0;
 let busted = false;
+let winner = false;
 
 function getDeck() {
     for (let i = 0 ; i < suits.length ; i++) {
@@ -93,6 +93,15 @@ function playBlackjack() {
             let again = confirm("Play again?");
             if (again === true) {
                 playAgain();
+            } else {
+                return console.log("Thanks for playing!");
+            }
+        }
+        if (winner === true) {
+            stay();
+            let again = confirm("Play again?");
+            if (again === true) {
+                playAgain();
             }
             return console.log("Thanks for playing!");
         }
@@ -109,9 +118,14 @@ function playBlackjack() {
 // TODO: Hit me function
 
 function hitMe(hand, owner) {
-    console.log("Owner type", typeof owner);
-    console.log("Player hits.");
-    console.log("=========================");
+    // console.log("Owner type", typeof owner);
+    if (typeof owner === "string") {
+        console.log("Dealer hits.");
+        console.log("=========================");
+    } else {
+        console.log("Player hits.");
+        console.log("=========================");
+    }
     drawCard(hand);
     displayHand(hand, owner);
     evaluateScore(handValue(hand))
@@ -141,6 +155,9 @@ function displayHand(hand, status) {
 // TODO: Stay function
 
 function stay() {
+    // calculate updated hand values (  TODO: possibly function this to make it cleaner)
+    playerValue = handValue(playerHand);
+    dealerValue = handValue(dealerHand);
     // Show the full dealer hand
     console.log("Player stays.");
     console.log("=========================");
@@ -151,7 +168,7 @@ function stay() {
     console.log("=========================");
     // Evaluate the current scores of both hands
     // If dealer > player and dealer < 17, dealer hits
-    while (dealerValue < playerValue && dealerValue < 17) {
+    while (dealerValue < 17) { // removed "dealerValue < playerValue &&" from logic decision, resulted in a 16:16 push
         //     if (dealerValue < playerValue && dealerValue < 17) {
         //         hitMe(dealerHand);
         //         continue;
@@ -167,6 +184,18 @@ function stay() {
     playerValue = handValue(playerHand);
     console.log("Player Score: ", playerValue);
     console.log("Dealer Score: ", dealerValue);
+    if (dealerValue >= 17) {
+        console.log("Dealer stays.");
+        console.log("=========================")
+    }
+    if (dealerValue > playerValue) {
+        console.log("Dealer wins.");
+        console.log("=========================");
+        let again = confirm("Play again?");
+        if (again === true) {
+            playAgain();
+        }
+    }
 }
 
 // TODO: Logic for win/lose conditions (player blackjack, bust, dealer blackjack)
@@ -175,7 +204,7 @@ function evaluateScore(score){
     // Instead of using a score param, use a hand param, calc the length and conditionally set a win message for a 'blackjack'
     if (score === 21) {
         // Doesn't take into account the dealer score, will need more logic for that in the future.
-        return console.log("Congrats, you've won!")
+        return (winner === true);
     } else if (score > 21) {
         console.log("Drats, you've busted!")
         return (busted = true);
