@@ -13,6 +13,7 @@ let dealerHand = [];
 let dealerHandHid = [];
 let playerValue = 0;
 let dealerValue = 0;
+let busted = false;
 
 function getDeck() {
     for (let i = 0 ; i < suits.length ; i++) {
@@ -87,6 +88,14 @@ function playBlackjack() {
     evaluateScore(playerValue);
     // If not, then prompt the user for a hit
     while (true) {
+        if (busted === true) {
+            console.log("Game over!");
+            let again = confirm("Play again?");
+            if (again === true) {
+                playAgain();
+            }
+            return console.log("Thanks for playing!");
+        }
         if (confirm("Hit 'OK' to hit, 'Cancel' to stand") === true) {
             hitMe(playerHand);
             console.log("=========================");
@@ -100,6 +109,9 @@ function playBlackjack() {
 // TODO: Hit me function
 
 function hitMe(hand, owner) {
+    console.log("Owner type", typeof owner);
+    console.log("Player hits.");
+    console.log("=========================");
     drawCard(hand);
     displayHand(hand, owner);
     evaluateScore(handValue(hand))
@@ -165,7 +177,8 @@ function evaluateScore(score){
         // Doesn't take into account the dealer score, will need more logic for that in the future.
         return console.log("Congrats, you've won!")
     } else if (score > 21) {
-        return console.log("Drats, you've busted!")
+        console.log("Drats, you've busted!")
+        return (busted = true);
     }
     return console.log("Make your next move.");
 }
@@ -177,3 +190,8 @@ function playAgain() {
 
 // TODO: Ace 1/11 array and resulting math calculations
 
+let play = confirm("How about a game of blackjack?")
+if (play === true) {
+    playBlackjack();
+}
+console.log("Have a great day!")
