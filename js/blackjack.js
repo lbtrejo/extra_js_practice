@@ -219,8 +219,13 @@ function playAgain() {
 
 // TODO: Ace 1/11 array and resulting math calculations
 
-let play = confirm("How about a game of blackjack?")
-if (play === true) {
-    playBlackjack();
-}
-console.log("Have a great day!")
+
+// let play = confirm("How about a game of blackjack?")
+// if (play === true) {
+//     playBlackjack();
+// }
+// console.log("Have a great day!")
+// Let a front end button drive this behavior
+
+let play = document.getElementById('play');
+play.addEventListener('click', playBlackjack);
