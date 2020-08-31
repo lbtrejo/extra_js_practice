@@ -128,7 +128,12 @@ function hitMe(hand, owner) {
     }
     drawCard(hand);
     displayHand(hand, owner);
-    evaluateScore(handValue(hand))
+    evaluateScore(handValue(hand));
+    if (typeof owner === "string") {
+        console.log("Dealer Score: ", dealerValue);
+    } else {
+        console.log("Player Score: ", playerValue);
+    }
 }
 
 function displayHand(hand, status) {
