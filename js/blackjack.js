@@ -12,7 +12,8 @@ let playerHand = [];
 let dealerHand = [];
 let playerValue = 0;
 let dealerValue = 0;
-let busted = false;
+let playerBusted = false;
+let dealerBusted = false;
 let winner = false;
 
 function getDeck() {
@@ -88,11 +89,11 @@ function playBlackjack() {
     evaluateScore(playerValue);
     // If not, then prompt the user for a hit
     while (true) {
-        if (busted === true) {
+        if (playerBusted === true) {
             console.log("Game over!");
             let again = confirm("Play again?");
             if (again === true) {
-                playAgain();
+                return playAgain();
             } else {
                 return console.log("Thanks for playing!");
             }
@@ -129,12 +130,13 @@ function hitMe(hand, owner) {
     drawCard(hand);
     displayHand(hand, owner);
     evaluateScore(handValue(hand));
-    if (typeof owner === "string") {
-        console.log("Dealer Score: ", dealerValue);
-    } else {
-        console.log("Player Score: ", playerValue);
+    // This doesn't work because I'm not recalculating the hand values after the draw
+//     if (typeof owner === "string") {
+//         console.log("Dealer Score: ", dealerValue);
+//     } else {
+//         console.log("Player Score: ", playerValue);
+//     }
     }
-}
 
 function displayHand(hand, status) {
     let display = [];
@@ -173,16 +175,7 @@ function stay() {
     console.log("=========================");
     // Evaluate the current scores of both hands
     // If dealer > player and dealer < 17, dealer hits
-    while (dealerValue < 17) { // removed "dealerValue < playerValue &&" from logic decision, resulted in a 16:16 push
-        //     if (dealerValue < playerValue && dealerValue < 17) {
-        //         hitMe(dealerHand);
-        //         continue;
-        //     } else if (dealerValue > 21 && playerValue < 21) {
-        //         return console.log("Dealer busts, player wins!");
-        //     } else if (dealerValue > playerValue) {
-        //         console.log("Dealer wins!")
-        //     }
-        // }
+    while (dealerValue < 17) {
         hitMe(dealerHand, "final");
         dealerValue = handValue(dealerHand);
     }
@@ -193,8 +186,25 @@ function stay() {
         console.log("Dealer stays.");
         console.log("=========================")
     }
+    if (dealerValue > 21) {
+        console.log("Dealer busts.");
+        console.log("Player wins. " + String.fromCodePoint(0x1F3C6));
+        console.log("=========================");
+        let again = confirm("Play again?");
+        if (again === true) {
+            playAgain();
+        }
+    }
     if (dealerValue > playerValue) {
         console.log("Dealer wins.");
+        console.log("=========================");
+        let again = confirm("Play again?");
+        if (again === true) {
+            playAgain();
+        }
+    }
+    if (playerValue > dealerValue) {
+        console.log("Player wins. " + String.fromCodePoint(0x1F3C6));
         console.log("=========================");
         let again = confirm("Play again?");
         if (again === true) {
@@ -209,10 +219,10 @@ function evaluateScore(score){
     // Instead of using a score param, use a hand param, calc the length and conditionally set a win message for a 'blackjack'
     if (score === 21) {
         // Doesn't take into account the dealer score, will need more logic for that in the future.
-        return (winner === true);
+        return (winner = true);
     } else if (score > 21) {
         console.log("Drats, you've busted!")
-        return (busted = true);
+        return (playerBusted = true);
     }
     return console.log("Make your next move.");
 }
@@ -223,14 +233,6 @@ function playAgain() {
 }
 
 // TODO: Ace 1/11 array and resulting math calculations
-
-
-// let play = confirm("How about a game of blackjack?")
-// if (play === true) {
-//     playBlackjack();
-// }
-// console.log("Have a great day!")
-// Let a front end button drive this behavior
 
 let play = document.getElementById('play');
 play.addEventListener('click', playBlackjack);
