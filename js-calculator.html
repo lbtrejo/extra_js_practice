@@ -14,32 +14,88 @@
     <div class="container-fluid p-0">
         <div class="jumbotron jumbotron-fluid bg-info mb-3">
             <div class="container-fluid px-0">
-                <h1 class="display-4 text-warning text-center bg-dark">Javascript Calculator</h1>
+                <h1 class="display-4 text-warning text-center bg-secondary">Javascript Calculator</h1>
 <!--                <p class="lead text-warning text-center">Now with emojis!</p>-->
             </div>
         </div>
 
         <div class="container mt-5">
             <form>
-                <div class="container">
+                <div class="container border bg-light">
                     <div class="row">
                         <div class="col-5">
                             <div class="form-group">
                                 <label for="numberInputOne"></label>
-                                <input type="text" class="form-control" id="numberInputOne" aria-describedby="firstNumber">
+                                <input type="text" class="form-control form-control-lg" id="numberInputOne" aria-describedby="firstNumber">
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="form-group">
                                 <label for="operatorInput"></label>
-                                <input type="text" class="form-control" id="operatorInput" aria-describedby="mathOperator">
+                                <input type="text" class="form-control form-control-lg" id="operatorInput" aria-describedby="mathOperator">
                             </div>
                         </div>
                         <div class="col-5">
                             <div class="form-group">
                                 <label for="numberInputTwo"></label>
-                                <input type="text" class="form-control" id="numberInputTwo" aria-describedby="secondNumber">
+                                <input type="text" class="form-control form-control-lg" id="numberInputTwo" aria-describedby="secondNumber">
                             </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-3 px-2">
+                            <button type="button" class="btn btn-secondary btn-block btn-lg number-btn" id="numberOne">1</button>
+                        </div>
+                        <div class="col-3 px-2">
+                            <button type="button" class="btn btn-secondary btn-block btn-lg number-btn" id="numberTwo">2</button>
+                        </div>
+                        <div class="col-3 px-2">
+                            <button type="button" class="btn btn-secondary btn-block btn-lg number-btn" id="numberThree">3</button>
+                        </div>
+                        <div class="col-3 px-2">
+                            <button type="button" class="btn btn-info btn-block btn-lg operator-btn" id="operatorPlus">+</button>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-3 px-2">
+                            <button type="button" class="btn btn-secondary btn-block btn-lg number-btn" id="numberFour">4</button>
+                        </div>
+                        <div class="col-3 px-2">
+                            <button type="button" class="btn btn-secondary btn-block btn-lg number-btn" id="numberFive">5</button>
+                        </div>
+                        <div class="col-3 px-2">
+                            <button type="button" class="btn btn-secondary btn-block btn-lg number-btn" id="numberSix">6</button>
+                        </div>
+                        <div class="col-3 px-2">
+                            <button type="button" class="btn btn-info btn-block btn-lg operator-btn" id="operatorMinus">-</button>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-3 px-2">
+                            <button type="button" class="btn btn-secondary btn-block btn-lg number-btn" id="numberSeven">7</button>
+                        </div>
+                        <div class="col-3 px-2">
+                            <button type="button" class="btn btn-secondary btn-block btn-lg number-btn" id="numberEight">8</button>
+                        </div>
+                        <div class="col-3 px-2">
+                            <button type="button" class="btn btn-secondary btn-block btn-lg number-btn" id="numberNine">9</button>
+                        </div>
+                        <div class="col-3 px-2">
+                            <button type="button" class="btn btn-info btn-block btn-lg operator-btn" id="operatorMultiply">*</button>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-3 px-2">
+                            <button type="button" class="btn btn-warning btn-block btn-lg" id="clearFields">C</button>
+                        </div>
+                        <div class="col-3 px-2">
+                            <button type="button" class="btn btn-secondary btn-block btn-lg number-btn" id="numberZero">0</button>
+                        </div>
+                        <div class="col-3 px-2">
+                            <button type="button" class="btn btn-warning btn-block btn-lg" id="operatorEquals">=</button>
+                        </div>
+                        <div class="col-3 px-2">
+                            <button type="button" class="btn btn-info btn-block btn-lg operator-btn" id="operatorDivide">/</button>
                         </div>
                     </div>
                 </div>
