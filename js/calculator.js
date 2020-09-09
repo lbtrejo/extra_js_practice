@@ -5,6 +5,9 @@ $(document).ready(function(){
     const inputOne = $("#numberInputOne");
     const inputTwo = $("#numberInputTwo");
     const inputOperator = $("#operatorInput");
+    const successOutput = $("#successAlert");
+    const warningOutput = $("#warningAlert");
+    const dangerOutput = $("#dangerAlert");
     let activeField = "";
 
     function calculateActiveField() {
@@ -37,6 +40,42 @@ $(document).ready(function(){
         activeField.val($(this).val());
     }
 
+    function clearInputs(){
+        inputOperator.val("");
+        inputOne.val("");
+        inputTwo.val("");
+        activeField = inputOne;
+        inputBackground(activeField);
+        warningOutput.text("Form cleared!")
+    }
+
+    function calculateResult(){
+        let leftOperand = parseInt(inputOne.val());
+        let rightOperand = parseInt(inputTwo.val());
+        let result = 0;
+        let resultString = (inputOne.val() + " " + inputOperator.val() + " " + inputTwo.val() + " = ");
+
+        switch (inputOperator.val()) {
+            case "+":
+                result = (leftOperand + rightOperand);
+                return successOutput.text(resultString + result);
+
+            case "-":
+                result = (leftOperand - rightOperand);
+                return successOutput.text(resultString + result);
+
+            case "*":
+                result = (leftOperand * rightOperand);
+                return successOutput.text(resultString + result);
+
+            case "/":
+                result = (leftOperand / rightOperand);
+                return successOutput.text(resultString + result);
+            default:
+                console.log("Something isn't behaving")
+        }
+    }
+
     $("#numberOne").click(clickNumber);
     $("#numberTwo").click(clickNumber);
     $("#numberThree").click(clickNumber);
@@ -52,5 +91,8 @@ $(document).ready(function(){
     $("#operatorMinus").click(clickOperator);
     $("#operatorMultiply").click(clickOperator);
     $("#operatorDivide").click(clickOperator);
+
+    $("#clearFields").click(clearInputs);
+    $("#operatorEquals").click(calculateResult);
 
 });
