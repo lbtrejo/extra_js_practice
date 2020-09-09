@@ -11,8 +11,6 @@ $(document).ready(function(){
         let leftLength = inputOne.val().length;
         let midLength = inputOperator.val().length;
         // let rightLength = inputTwo.val().length;
-        console.log("leftLength:", leftLength);
-        console.log("midLength:", midLength);
         if (leftLength > 0 && midLength > 0) {
             activeField = inputTwo;
             return activeField;
@@ -31,11 +29,10 @@ $(document).ready(function(){
         calculateActiveField();
         inputBackground(activeField);
         activeField.val(activeField.val() + $(this).val());
-        console.log($(this));
     }
 
     function clickOperator(){
-        activeField = $("#operatorInput");
+        activeField = inputOperator
         inputBackground(activeField);
         activeField.val($(this).val());
     }
