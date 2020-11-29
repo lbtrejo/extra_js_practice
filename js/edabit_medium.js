@@ -55,3 +55,28 @@ const perimeter = (l, num) => {
     }
 }
 
+// Create a function that takes a number (step) as an argument and returns the number of matchsticks in that step. See step 1, 2 and 3 in the image above.
+
+function matchHouses(step) {
+    if (step === 0){
+        return 0;
+    } else {
+        return (5 * step) + 1
+    }
+}
+
+
+/*
+Create a function that returns true if the first array can be nested inside the second.
+
+arr1 can be nested inside arr2 if:
+
+arr1's min is greater than arr2's min.
+arr1's max is less than arr2's max.
+ */
+
+// function canNest(arr1, arr2) {
+//     let la1 = arr1.length;
+//     let la2 = arr2.length;
+//     return arr1[0] > arr2[0] && arr1[la1 - 1] < arr2[la2 - 1];
+// }
