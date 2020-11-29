@@ -38,3 +38,20 @@ const missingAngle = (first, second) => {
         return "obtuse";
     }
 }
+
+// Create a function that takes an integer n and returns the nth tetrahedral number.
+
+// 1, 1 + (1 + 2), 1 + (1 + 2) + (1 + 2 + 3)
+const tetra = (n) => {
+    return (n * (n + 1) * (n + 2) / 6);
+}
+
+
+//Write a function that takes a number and returns the perimeter of either a circle or a square. The input will be in the form (letter l, number num) where the letter will be either "s" for square, or "c" for circle, and the number will be the side of the square or the radius of the circle.
+const perimeter = (l, num) => {
+    switch (l) {
+        case "s": return num * 4;
+        default : return num * 6.28;
+    }
+}
+
